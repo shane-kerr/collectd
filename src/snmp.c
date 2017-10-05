@@ -803,6 +803,10 @@ static void csnmp_host_open_session(host_definition_t *host) {
     sess.community_len = strlen(host->community);
   }
 
+  /* XXX: try setting timeout & retries */
+  sess.timeout = 1000000;
+  sess.retries = 0;
+
   /* snmp_sess_open will copy the `struct snmp_session *'. */
   host->sess_handle = snmp_sess_open(&sess);
 
